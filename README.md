@@ -1,0 +1,2 @@
+# HotTakes
+API for HotTakes 
