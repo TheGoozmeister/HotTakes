@@ -1,8 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const helmet = require("helmet");
-const PASSWORD = require("./mongo_log");
 
 
 const userRoutes = require('./routes/user');
@@ -10,8 +10,7 @@ const sauceRoutes = require('./routes/sauce');
 
 const app = express();
 app.use(helmet());
-
-mongoose.connect('mongodb+srv://Gooz:' + PASSWORD + '@cluster0.ka8g6fb.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://' + process.env.DB_USER + ':' + process.env.DB_PASSWORD + '@cluster0.ka8g6fb.mongodb.net/?retryWrites=true&w=majority',
 { useNewUrlParser: true,
   useUnifiedTopology: true })
 .then(() => console.log('Connexion à MongoDB réussie !'))
